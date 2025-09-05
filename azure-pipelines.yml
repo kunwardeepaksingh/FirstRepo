@@ -1,0 +1,8 @@
+trigger: 
+- main
+
+pool: agentpool
+
+steps: 
+- script: "hello world"
+
