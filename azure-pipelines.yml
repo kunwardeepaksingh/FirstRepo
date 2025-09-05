@@ -1,8 +1,12 @@
-trigger: 
+trigger:
 - main
 
-pool: agentpool
+pool:
+  name: agentpool
 
-steps: 
-- script: "hello world"
+steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Hello World
 
