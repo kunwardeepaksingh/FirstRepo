@@ -1,40 +1,11 @@
-name: Terraform CI
+name: Simple workflow
 
-on:
-  push:
-    branches:
-      - main
-      - 'releases/**'
+on: workflow_dispatch
 
-jobs:
-  production-deploy:
-    runs-on: runnerbhai   # Aapka self-hosted runner ka naam h
-
-    steps:
-      # Step 1: Checkout code
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      # Step 4: Install Terraform
-      - name: Install Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.9.5   # Stable version (use your preferred version)
-
-      # Step 5: Terraform Init
-      - name: Terraform Init
-        run: terraform init
-
-      # Step 6: Terraform Validate
-      - name: Terraform Validate
-        run: terraform validate
-
-      # Step 7: Terraform Plan
-        # Plan output file optional (for later apply)
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-
-
-      
-
-      
+jobs: 
+  my_first_job:
+    name: first job
+    run-on: [self-hosted, runnerbhai]
+    steps: 
+      - name: print hello world
+        run: echo "hello world"
