@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+
+jobs:
+  production-deploy:
+    if: github.repository == 'octo-org/octo-repo-prod'
+    runs-on: runnerbhai
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+      - run: npm install -g bats      
+
+      - name: Install Terraform
+  # You may pin to the exact commit or the version.
+  # uses: little-core-labs/install-terraform@1e577535d279f1999a5abf60337ddc3ff225e79d
+        uses: little-core-labs/install-terraform@v2.0.0
+        with:
+    # Version of terraform to download
+          version:  v2.0.0
+          
+      
+
+      
