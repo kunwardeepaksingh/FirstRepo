@@ -1,3 +1,5 @@
+name: Terraform CI
+
 on:
   push:
     branches:
@@ -6,23 +8,33 @@ on:
 
 jobs:
   production-deploy:
-    if: github.repository == 'octo-org/octo-repo-prod'
-    runs-on: runnerbhai
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-      - run: npm install -g bats      
+    runs-on: runnerbhai   # Aapka self-hosted runner ka naam
 
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      # Step 4: Install Terraform
       - name: Install Terraform
-  # You may pin to the exact commit or the version.
-  # uses: little-core-labs/install-terraform@1e577535d279f1999a5abf60337ddc3ff225e79d
-        uses: little-core-labs/install-terraform@v2.0.0
+        uses: hashicorp/setup-terraform@v3
         with:
-    # Version of terraform to download
-          version:  v2.0.0
-          
+          terraform_version: 1.9.5   # Stable version (use your preferred version)
+
+      # Step 5: Terraform Init
+      - name: Terraform Init
+        run: terraform init
+
+      # Step 6: Terraform Validate
+      - name: Terraform Validate
+        run: terraform validate
+
+      # Step 7: Terraform Plan
+        # Plan output file optional (for later apply)
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+
       
 
       
