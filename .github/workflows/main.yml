@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs: 
   my_first_job:
     name: first job
-    run-on: [self-hosted, runnerbhai]
+    runs-on: [self-hosted, runnerbhai]
     steps: 
       - name: print hello world
         run: echo "hello world"
