@@ -8,7 +8,7 @@ on:
 
 jobs:
   production-deploy:
-    runs-on: runnerbhai   # Aapka self-hosted runner ka naam
+    runs-on: runnerbhai   # Aapka self-hosted runner ka naam h
 
     steps:
       # Step 1: Checkout code
